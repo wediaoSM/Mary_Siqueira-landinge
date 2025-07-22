@@ -1,0 +1,1013 @@
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: linear-gradient(145deg, #1a1a1a, #0f0e0e 70%);
+    font-family: 'Montserrat', sans-serif;
+    color: #eee;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 100px;
+    /* espaço navbar */
+}
+
+/* Background animado suave */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center,
+            rgba(212, 175, 127, 0.08),
+            transparent 70%);
+    animation: shine 25s linear infinite;
+    z-index: 0;
+    filter: blur(70px);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-radial-gradient(circle,
+            rgba(255, 255, 255, 0.01) 0px,
+            transparent 1px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1.15);
+    }
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 14, 14, 0.96);
+    backdrop-filter: saturate(180%) blur(12px);
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45);
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(212, 175, 127, 0.15);
+}
+
+.navbar.scrolled {
+    padding: 12px 5%;
+    background: rgba(10, 10, 10, 0.98);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    border-bottom-color: #d4af7f;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    user-select: none;
+}
+
+.logo-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    background: linear-gradient(to right, #d4af7f, #a87d4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-shadow: 0 0 6px rgba(212, 175, 127, 0.6);
+}
+
+.logo-sub {
+    font-size: 16px;
+    color: #d4af7f;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-weight: 400;
+    font-style: italic;
+    text-shadow: 0 0 5px rgba(212, 175, 127, 0.7);
+}
+
+/* Links navegação */
+.nav-links {
+    display: flex;
+    gap: 36px;
+}
+
+.nav-links a {
+    color: #e0d9c2;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, #d4af7f, #a87d4e);
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #d4af7f;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+/* Botão menu mobile */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #d4af7f;
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Fundo central melhorado */
+.fundo-central {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 320vh;
+    background: linear-gradient(145deg,
+            rgba(212, 175, 127, 0.06),
+            rgba(0, 0, 0, 0.22));
+    border-radius: 40px;
+    box-shadow: 0 12px 50px rgba(212, 175, 127, 0.25);
+    z-index: 1;
+    backdrop-filter: blur(12px);
+    animation: pulse-sutil 20s ease-in-out infinite alternate;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes pulse-sutil {
+    0% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 12px 50px rgba(212, 175, 127, 0.25);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.01);
+        box-shadow: 0 18px 70px rgba(212, 175, 127, 0.3);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 12px 50px rgba(212, 175, 127, 0.25);
+    }
+}
+
+/* Containers e seções */
+.container,
+section,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    padding: 48px 24px;
+    margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-bottom: 100px;
+    animation: fadeIn 1.5s ease-in-out;
+    user-select: none;
+}
+
+.hero h1 {
+    font-size: 24px;
+    /* antes era 54px */
+    font-weight: 600;
+    /* antes era 900 */
+    background: linear-gradient(to right, #d4af7f, #a87d4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 6px rgba(212, 175, 127, 0.4);
+}
+
+.hero p {
+    font-size: 20px;
+    color: #ccc;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards banners principais */
+.new-banners-section {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
+    justify-content: center;
+}
+
+.new-banners-section .card {
+    width: calc(33.33% - 14.66px);
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(145deg, #2a2a2a, #111);
+    border: 2px solid transparent;
+    transition: all 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-banners-section .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 55px rgba(212, 175, 127, 0.85);
+    border-color: #d4af7f;
+    z-index: 3;
+}
+
+.new-banners-section .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 20px;
+    filter: brightness(0.95);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+    user-select: none;
+}
+
+.new-banners-section .card:hover img {
+    filter: brightness(1.05) saturate(1.2);
+}
+
+/* Cards menores mentoria, ebook, marketing */
+#mentoria {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+#mentoria .card {
+    width: 280px;
+    height: 360px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    position: relative;
+    background: #1f1b18;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#mentoria .card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 20px 50px rgba(212, 175, 127, 0.8);
+    border-color: #d4af7f;
+    z-index: 5;
+}
+
+#mentoria .card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+#mentoria .card:hover img {
+    filter: brightness(1);
+}
+
+#mentoria .card-text {
+    position: relative;
+    padding: 28px 30px 30px 30px;
+    color: #f0e6d2;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    background: linear-gradient(to top,
+            rgba(20, 14, 4, 0.9),
+            rgba(20, 14, 4, 0.6) 40%,
+            transparent 80%);
+    border-radius: 0 0 24px 24px;
+}
+
+#mentoria .card-text p {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: #d4af7f;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#mentoria .card-text h2 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1.3px;
+    color: #ffd382;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 0 8px #d4af7f;
+}
+
+/* Seção "Sobre" */
+.text-img-section {
+    background: linear-gradient(to bottom right, #111 0%, #1c1b1a 100%);
+    border-radius: 24px;
+    margin: 80px auto 100px;
+    padding: 60px 48px;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    user-select: none;
+}
+
+.text-img-section .section-title {
+    font-size: 38px;
+    margin-bottom: 48px;
+    color: #d4af7f;
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(212, 175, 127, 0.85);
+}
+
+.text-img-section .section-title::after {
+    content: '';
+    width: 90px;
+    height: 4px;
+    background-color: #d4af7f;
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    box-shadow: 0 0 8px #d4af7f;
+}
+
+.content-flex {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #d9d2c6;
+    font-size: 19px;
+    line-height: 1.85;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    user-select: text;
+}
+
+.text-container {
+    flex: 1;
+    text-align: left;
+}
+
+.text-container strong {
+    color: #d4af7f;
+    font-weight: 700;
+}
+
+.img-container {
+    flex: 0 0 auto;
+    max-width: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(212, 175, 127, 0.7);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
+    border-radius: 20px;
+    user-select: none;
+}
+
+.img-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(212, 175, 127, 0.95);
+}
+
+/* Seção contato */
+#contato {
+    background: linear-gradient(to bottom right, #111 0%, #1c1b1a 100%);
+    border-radius: 24px;
+    margin: 60px auto 80px;
+    padding: 50px 40px;
+    width: 90%;
+    max-width: 800px;
+    color: #e0d9c2;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    user-select: none;
+}
+
+#contato h2 {
+    font-size: 34px;
+    color: #d4af7f;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px #d4af7f;
+}
+
+#contato h2::after {
+    content: '';
+    width: 90px;
+    height: 4px;
+    background-color: #d4af7f;
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    box-shadow: 0 0 10px #d4af7f;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-size: 22px;
+    margin: 22px 0;
+    color: #d4af7f;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    cursor: default;
+    user-select: text;
+}
+
+.contact-item i {
+    font-size: 32px;
+    min-width: 36px;
+    text-shadow: 0 0 6px #d4af7f;
+}
+
+.contact-item a {
+    color: #d4af7f;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover,
+.contact-item a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: #d4af7f;
+    background-color: #0f0f0f;
+    padding: 40px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    user-select: none;
+    box-shadow: inset 0 1px 5px rgba(255, 255, 255, 0.05);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .new-banners-section .card {
+        width: calc(50% - 18px);
+        height: 460px;
+    }
+
+    #mentoria {
+        justify-content: center;
+        gap: 26px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    /* Navbar padrão */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 14, 14, 0.85);
+        backdrop-filter: saturate(200%) blur(14px);
+        padding: 20px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 9999;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid transparent;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        user-select: none;
+    }
+
+    /* Navbar após scroll */
+    .navbar.scrolled {
+        padding: 12px 5%;
+        background: linear-gradient(90deg, rgba(212, 175, 127, 0.15), rgba(15, 14, 14, 0.98));
+        box-shadow:
+            0 4px 8px rgba(212, 175, 127, 0.15),
+            0 8px 25px rgba(0, 0, 0, 0.7);
+        border-bottom: 2px solid #d4af7f;
+        backdrop-filter: saturate(300%) blur(16px);
+    }
+
+    /* Logo */
+    .logo-main {
+        font-family: 'Playfair Display', serif;
+        font-size: 26px;
+        font-weight: 700;
+        background: linear-gradient(45deg, #d4af7f, #a87d4e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+        line-height: 1;
+        text-shadow:
+            0 0 8px rgba(212, 175, 127, 0.7),
+            0 0 15px rgba(212, 175, 127, 0.4);
+        transition: text-shadow 0.3s ease;
+        user-select: none;
+    }
+
+    .logo-main:hover {
+        text-shadow:
+            0 0 12px #fff,
+            0 0 25px #d4af7f,
+            0 0 40px #d4af7f;
+    }
+
+    /* Nav links */
+    .nav-links a {
+        color: #e0d9c2;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 1.3px;
+        padding: 8px 0;
+        position: relative;
+        transition: color 0.4s ease, text-shadow 0.4s ease;
+        user-select: none;
+    }
+
+    /* Sublinhado animado */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #d4af7f, #a87d4e);
+        border-radius: 3px;
+        transition: width 0.4s ease, left 0.4s ease;
+    }
+
+    /* Hover e foco dos links */
+    .nav-links a:hover,
+    .nav-links a:focus {
+        color: #d4af7f;
+        text-shadow:
+            0 0 6px #d4af7f,
+            0 0 12px #d4af7f;
+        outline: none;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+        width: 100%;
+        left: 0;
+    }
+
+    /* Botão menu mobile */
+    .mobile-menu-btn {
+        display: none;
+        background: transparent;
+        border: 2px solid #d4af7f;
+        padding: 6px 12px;
+        border-radius: 8px;
+        color: #d4af7f;
+        font-size: 28px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        user-select: none;
+        box-shadow:
+            0 0 6px #d4af7f,
+            inset 0 0 8px #d4af7f;
+    }
+
+    .mobile-menu-btn:hover {
+        background-color: #d4af7f;
+        color: #1b1a19;
+        transform: scale(1.15);
+    }
+
+    /* Mobile menu active state */
+    .nav-links.active {
+        right: 0;
+        box-shadow:
+            -6px 0 18px rgba(212, 175, 127, 0.6);
+    }
+
+
+
+
+    /* Cards banners mobile */
+    .new-banners-section .card {
+        width: 100%;
+        height: 400px;
+    }
+
+    /* Mentoria cards mobile */
+    #mentoria {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    #mentoria .card {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    /* Seção Sobre */
+    .text-img-section {
+        flex-direction: column;
+        padding: 36px 24px;
+        margin: 60px auto 80px;
+        gap: 32px;
+    }
+
+    .text-img-section .section-title {
+        font-size: 32px;
+    }
+
+    .content-flex {
+        font-size: 17px;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .text-container {
+        text-align: center;
+    }
+
+    .img-container {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .logo-main {
+        font-size: 24px;
+    }
+
+    .logo-sub {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+
+    #contato .contact-item {
+        font-size: 18px;
+        gap: 12px;
+    }
+
+    #contato .contact-item i {
+        font-size: 26px;
+        min-width: 30px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+}
+
+/* Modal Overlay: cobre toda a tela */
+.modal-overlay {
+    display: none;
+    /* Ativado via JS com display: flex */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+}
+
+/* Caixa principal do modal */
+.modal-box {
+    max-width: 860px;
+    width: 95%;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    position: relative;
+    background: transparent;
+    box-shadow: 0 0 25px rgba(212, 175, 127, 0.3);
+}
+
+/* Camada que segura fundo, overlay e conteúdo */
+.modal-bg-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagem de fundo */
+.modal-img-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 20%;
+    /* <- aqui ajusta a vertical */
+    z-index: 1;
+    transition: background-image 0.3s ease;
+}
+
+
+/* Overlay preto transparente por cima da imagem */
+.modal-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+/* Conteúdo centralizado por cima */
+.modal-conteudo-centralizado {
+    position: relative;
+    z-index: 3;
+    color: #f5f0e6;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 90%;
+
+    /* SCROLL ATIVADO */
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af7f transparent;
+}
+
+/* Scroll customizado para Chrome */
+.modal-conteudo-centralizado::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-conteudo-centralizado::-webkit-scrollbar-thumb {
+    background-color: #d4af7f;
+    border-radius: 3px;
+}
+
+/* Título */
+.modal-conteudo-centralizado h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+    color: #d4af7f;
+}
+
+/* Parágrafo */
+.modal-conteudo-centralizado p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Botão */
+.modal-button {
+    display: inline-block;
+    background: #d4af7f;
+    color: #1b1a19;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.modal-button:hover {
+    background: #b8935e;
+}
+
+/* Botão de fechar (X) */
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 28px;
+    color: #d4af7f;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: linear-gradient(145deg, #1a1a1a, #0f0e0e 70%);
+    font-family: 'Montserrat', sans-serif;
+    color: #eee;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 100px;
+    /* espaço navbar */
+}
+
+/* Wrapper para imagens com efeitos */
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    filter: brightness(0.95);
+    transition: filter 0.3s ease;
+}
+
+.card:hover .img-wrapper {
+    filter: brightness(1.05) saturate(1.2);
+}
+
+/* Remover efeitos diretos da imagem */
+.card img,
+#mentoria .card img,
+.img-container img {
+    filter: none !important;
+    transition: none !important;
+    border-radius: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.card {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+.img-container .img-wrapper {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
+    transition: transform 0.3s ease;
+}
+
+.img-container:hover .img-wrapper {
+    transform: scale(1.05);
+    box-shadow: 0 15px 45px rgba(212, 175, 127, 0.95);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.clique-text {
+    font-family: 'Cinzel', serif;
+    /* igual ao estilo do logotipo */
+    font-size: 14px;
+    color: #d4af7f;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 4px #d4af7f,
+        0 0 8px #d4af7f,
+        0 0 12px rgba(212, 175, 127, 0.5);
+    text-transform: uppercase;
+}
