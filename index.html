@@ -5,16 +5,15 @@
     <meta charset="UTF-8" />
     <title>Mary Siqueira - Mentoria</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css">
+
+    <!-- fonts & icons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-
+    <!-- seu CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,20 +23,18 @@
             <div class="logo-main">MARY SIQUEIRA</div>
             <div class="logo-sub">AMENTORA</div>
         </div>
-
         <div class="nav-links">
             <a href="#inicio">Início</a>
             <a href="#sobre">Sobre</a>
             <a href="#mentoria">Mentoria</a>
             <a href="#contato">Contato</a>
         </div>
-
         <button class="mobile-menu-btn" aria-label="Abrir menu">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
 
-    <div class="fundo-central"></div> <!-- Fundo Central -->
+    <div class="fundo-central"></div>
 
     <div class="container" id="inicio">
         <div class="hero" role="banner">
@@ -45,50 +42,41 @@
             <p>Empresária • Mentora • Conectando Mulheres</p>
         </div>
 
-        <!-- Substitua os 3 primeiros banners por isso: -->
+        <!-- Banners de cima (abre modal) -->
         <section class="new-banners-section card-no-border" aria-label="Banners principais">
-            <div class="card" onclick="abrirModal('mentoria')" role="button" tabindex="0"
-                aria-label="Abrir Novo Banner 1">
+            <div class="card" onclick="abrirModal('mentoria')" role="button" tabindex="0">
                 <img src="fotos mary/img teste.jpeg" loading="lazy" alt="Novo Banner 1" />
-                <div class="card-overlay">
-                    <span class="clique-text">CLIQUE AQUI</span>
-                </div>
+                <div class="card-overlay"><span class="clique-text">CLIQUE AQUI</span></div>
             </div>
-            <div class="card" onclick="abrirModal('ebook')" role="button" tabindex="0" aria-label="Abrir Novo Banner 2">
+            <div class="card" onclick="abrirModal('ebook')" role="button" tabindex="0">
                 <img src="fotos mary/img vermelho.jpg" loading="lazy" alt="Novo Banner 2" />
-                <div class="card-overlay">
-                    <span class="clique-text">CLIQUE AQUI</span>
-                </div>
+                <div class="card-overlay"><span class="clique-text">CLIQUE AQUI</span></div>
             </div>
-            <div class="card" onclick="abrirModal('marketing')" role="button" tabindex="0"
-                aria-label="Abrir Novo Banner 3">
+            <div class="card" onclick="abrirModal('marketing')" role="button" tabindex="0">
                 <img src="fotos mary/Ebook Gratuito Branco _ Instagram Stories.jpg" loading="lazy"
                     alt="Novo Banner 3" />
-                <div class="card-overlay">
-                    <span class="clique-text">CLIQUE AQUI</span>
-                </div>
+                <div class="card-overlay"><span class="clique-text">CLIQUE AQUI</span></div>
             </div>
         </section>
+    </div>
 
-
-
-        <!-- MODAL -->
-        <div class="modal-overlay" id="modalOverlay">
-            <div class="modal-box">
-                <span class="modal-close" onclick="fecharModal()">×</span>
-                <div class="modal-bg-wrapper">
-                    <div class="modal-img-bg" id="modalImgBg"></div>
-                    <div class="modal-bg-overlay"></div>
-                    <div class="modal-conteudo-centralizado" id="modalConteudo"></div>
-                </div>
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="fecharModal()">×</span>
+            <div class="modal-bg-wrapper">
+                <div class="modal-img-bg" id="modalImgBg"></div>
+                <div class="modal-bg-overlay"></div>
+                <div class="modal-conteudo-centralizado" id="modalConteudo"></div>
             </div>
         </div>
+    </div>
 
-
-
+    <div class="container">
+        <!-- Banners de baixo (links diretos) -->
         <section id="mentoria" aria-label="Programas e Ebooks">
-            <div class="card" id="ebook" onclick="window.open('https://seulink.com', '_blank')" role="button"
-                tabindex="0" aria-label="Abrir EBOOK Feminilidade">
+            <div class="card" onclick="window.open('https://pay.hotmart.com/Y98815848G?bid=1752506322525')"
+                role="button" tabindex="0">
                 <img src="fotos mary/img ebook.jpg" loading="lazy" alt="Ebook Feminilidade" />
                 <div class="card-text">
                     <p>E BOOK</p>
@@ -96,8 +84,8 @@
                 </div>
             </div>
 
-            <div class="card card-mentoria" onclick="window.open('https://seulink.com', '_blank')" role="button"
-                tabindex="0" aria-label="Abrir Programa de Mentoria">
+            <div class="card card-mentoria" onclick="window.open('PDF MENTORIA/Proposta mentoria ID (1).pdf')"
+                role="button" tabindex="0">
                 <img src="fotos mary/img mentoria.jpeg" loading="lazy" alt="Programa de Mentoria" />
                 <div class="card-text">
                     <p>PROGRAMA DE</p>
@@ -105,18 +93,28 @@
                 </div>
             </div>
 
-            <div class="card card-marketing" onclick="window.open('https://seulink.com', '_blank')" role="button"
-                tabindex="0" aria-label="Abrir Marketing Conect IA">
+            <div class="card card-marketing" onclick="window.open('https://wa.me/5516999013467')" role="button"
+                tabindex="0">
                 <img src="fotos mary/img marketing.jpg" loading="lazy" alt="Marketing Conect IA" />
                 <div class="card-text">
                     <p>MARKETING</p>
                     <h2>CONECT IA</h2>
                 </div>
             </div>
-        </section>
 
+            <!-- NOVO BANNER CORRIGIDO -->
+            <div class="card card-extra" onclick="window.open('PDF MENTORIA/Código Secreto MP.pdf')" role="button"
+                tabindex="0">
+                <img src="fotos mary/xicara.jpeg" loading="lazy" alt="Novo Banner" />
+                <div class="card-text">
+                    <p>CAFÉ</p>
+                    <h2>EMPRESARIAL</h2>
+                </div>
+            </div>
+        </section>
     </div>
 
+    <!-- Sobre -->
     <section class="text-img-section" id="sobre" aria-label="Sobre Mary Siqueira">
         <h2 class="section-title">OLÁ, SOU MARY</h2>
         <div class="content-flex">
@@ -126,7 +124,7 @@
                     verdade na frente da estratégia.</p>
                 <p>Você é presença. É escuta. É direção.</p>
                 <p>Ajudo empreendedoras (e empreendedores) a se encontrarem na própria marca, a se posicionarem com
-                    8 clareza e a crescerem com consciência.</p>
+                    clareza e a crescerem com consciência.</p>
                 <p>Sua fala tem tato. Sua entrega tem intenção. E sua visão vai além de números — ela toca pessoas.</p>
                 <p>Mais do que ajudar mulheres a se posicionarem no digital, auxilio a se posicionarem na vida, com
                     escuta, direção e sensibilidade firme, integrando comunicação, marketing e autoconhecimento.</p>
@@ -138,30 +136,27 @@
         </div>
     </section>
 
-    <!-- Seção contato -->
+    <!-- Contato -->
     <section id="contato" aria-label="Contato Mary Siqueira">
         <h2>Contato</h2>
-        <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:mary.cristina@hotmail.com.br" target="_blank"
-                rel="noopener noreferrer">@mary.cristina@hotmail.com.br</a>
+        <div class="contact-item"><i class="fas fa-envelope"></i>
+            <a href="mailto:mary.cristina@hotmail.com.br" target="_blank">@mary.cristina@hotmail.com.br</a>
         </div>
-        <div class="contact-item">
-            <i class="fab fa-instagram"></i>
-            <a href="https://www.instagram.com/maryamentora" target="_blank" rel="noopener noreferrer">@marysiqueira</a>
+        <div class="contact-item"><i class="fab fa-instagram"></i>
+            <a href="https://www.instagram.com/maryamentora" target="_blank">@marysiqueira</a>
         </div>
-        <div class="contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/5516999013467" target="_blank" rel="noopener noreferrer">+55 (16)99901-3467</a>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/5516999013467" target="_blank">+55 (16)99901-3467</a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Mary Siqueira. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- seu JS -->
     <script src="script.js"></script>
-
-
 </body>
 
 </html>
